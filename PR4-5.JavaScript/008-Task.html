@@ -1,0 +1,38 @@
+﻿﻿<!--
+
+    Compose operate, add и multiply function, to make the expression in line 18 executable 
+    and follows ( 2 + 3 ) + ( 4 * 5 )
+
+-->
+
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <script>
+        function add(a, b) {
+            return a + b;
+        }
+
+        function multiply(a, b) {
+            return a * b;
+        }
+
+        function operate(operation, a, b) {
+            if (typeof operation !== 'function') {
+                throw new Error("First argument must be a function");
+            }
+            if (typeof a !== 'number' || typeof b !== 'number') {
+                throw new Error("Second and third arguments must be numbers");
+            }
+            return operation(a, b);
+        }
+
+        var i = operate(add, operate(add, 2, 3), operate(multiply, 4, 5)); // (2 + 3) + (4 * 5)
+
+        document.write(i); // output 25 
+
+    </script>
+</body>
+</html>
